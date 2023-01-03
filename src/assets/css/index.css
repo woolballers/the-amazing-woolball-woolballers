@@ -11,3 +11,128 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* button-orange is button-5 by Sketch from this URL https://getcssscan.com/css-buttons-examples */
+.button-orange {
+  align-items: center;
+  background-clip: padding-box;
+  background-color: #fa6400;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;   color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 2rem;
+  padding-right: calc(.875rem - 1px) calc(1.5rem - 1px);
+  padding-left: calc(.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+
+.button-orange:hover, .button-5:focus {
+  background-color: #fb8332;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+
+.button-orange:hover {
+  transform: translateY(-1px);
+}
+
+.button-orange:active {
+  background-color: #c85000;
+  box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+  transform: translateY(0);
+}
+
+.names-box {
+  padding: 50px;
+  min-height: 400px;
+}
+
+@font-face {
+  font-family: "GrislyBeast";
+  src: local("GrislyBeast"), url(../fonts/GrislyBeast.otf) format("opentype");
+}
+
+.GrislyBeast {
+  font-family: "GrislyBeast";
+  font-size: 16px;
+}
+
+.GrislyBeastH3 {
+  font-family: "GrislyBeast";
+  font-size: 28px;
+}
+
+/* button-hashtag is button-89 by Temani Afif from this URL https://getcssscan.com/css-buttons-examples */
+.button-hashtag {
+  --b: 3px;   /* border thickness */
+  --s: .45em; /* size of the corner */
+  --color: #373B44;
+
+  padding: calc(.5em + var(--s)) calc(.9em + var(--s));
+  color: var(--color);
+  --_p: var(--s);
+  background:
+    conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--color) 0)
+    var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+  transition: .3s linear, color 0s, background-color 0s;
+  outline: var(--b) solid #0000;
+  outline-offset: .6em;
+  font-size: 16px;
+
+  border: 0;
+
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-hashtag:hover,
+.button-hashtag:focus-visible{
+  --_p: 0px;
+  outline-color: var(--color);
+  outline-offset: .05em;
+}
+
+.button-hashtag:active {
+  background: var(--color);
+  color: #fff;
+}
+
+.arrowHeightRed {
+  height: 20px;
+  width: 70px;
+  background-color: red;
+  -webkit-mask: url(assets/images/arrows/swirl-arrow-right.svg) no-repeat center;
+  mask: url(assets/images/arrows/swirl-arrow-right.svg) no-repeat center;
+}
+
+.arrowHeightGreen {
+  height: 20px;
+  width: 70px;
+  background-color: green;
+  -webkit-mask: url(assets/images/arrows/swirl-arrow-right.svg) no-repeat center;
+  mask: url(assets/images/arrows/swirl-arrow-right.svg) no-repeat center;
+}
+
+.arrowHeightBlue {
+  height: 20px;
+  width: 70px;
+  background-color: blue;
+  -webkit-mask: url(assets/images/arrows/swirl-arrow-right.svg) no-repeat center;
+  mask: url(assets/images/arrows/swirl-arrow-right.svg) no-repeat center;
+}

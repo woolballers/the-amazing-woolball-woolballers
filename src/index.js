@@ -6,8 +6,12 @@ import { configureChains, createClient, WagmiConfig } from "wagmi";
 import { publicProvider } from "wagmi/providers/public";
 import { mainnet, goerli } from "wagmi/chains";
 
-import "./assets/css/index.css";
 import App from "./App";
+
+import "./assets/css/index.css";
+import "./assets/css/bootstrap.min.css"
+import "./assets/css/augmented-ui.min.css"
+
 
 const chains = [mainnet, goerli];
 
