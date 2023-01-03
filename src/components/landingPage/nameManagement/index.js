@@ -20,9 +20,15 @@ function NameManagement() {
       <div className="row">
         <div className="col-lg-6 col-md-12">
           <p>
-            Name<span style={{color:'orange'}}>#</span>
-            <input type="text" id="wname" name="wname"></input>
-            <button className="button-orange"> Zeeearch! </button>
+            <div>
+              Name<span style={{color:'orange'}}>#</span>
+              <input type="text" id="wname" className="is-invalid"></input>
+              <button className="button-orange"> Zeeearch! </button>
+              <button className="button-orange bg-secondary"> Register </button>
+              <div className="invalid-feedback">
+                Please choose a username.
+              </div>
+            </div>
           </p>
 
           <p>
@@ -53,16 +59,19 @@ function NameManagement() {
                 <div>
                   <input type="checkbox" className="form-check-input" name="friendship"></input>
                   <label className="form-check-label" for="friendship">Friendship</label>
+                  <input type="text" className="mx-2" id="wname" placeholder="How long?"></input>
                 </div>
 
                 <div>
                   <input type="checkbox" className="form-check-input" name="collaborated"></input>
                   <label className="form-check-label" for="collaborated">Work</label>
+                  <input type="text" className="mx-2" id="wname" placeholder="Which organization?"></input>
                 </div>
 
                 <div>
                   <input type="checkbox" className="form-check-input" name="community"></input>
                   <label className="form-check-label" for="community">Shared communities</label>
+                  <input type="text" className="mx-2" id="wname" placeholder="Which communities?"></input>
                 </div>
               </div>
               <button className="button-orange"> Create </button>
