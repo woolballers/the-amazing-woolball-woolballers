@@ -1,12 +1,11 @@
-import Profile from "./components/profile";
+import Navbar from "./components/navbar";
 import NameManagement from "components/landingPage/nameManagement";
 
 function App() {
   return (
     <div className="App">
       <div className="container">
-        <Profile />
-        <div> &nbsp; &nbsp; &nbsp; </div>
+        <Navbar />
         <NameManagement />
       </div>
     </div>

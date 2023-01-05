@@ -9,11 +9,7 @@ export default function Profile() {
   const { disconnect } = useDisconnect();
 
   if (isConnected)
-    return (
-      <div>
-        Connected to {address}
-        <button onClick={() => disconnect()}>Disconnect</button>
-      </div>
-    );
-  return <button onClick={() => connect()}>Connect Wallet</button>;
+    return <button className="btn btn-outline-success ms-auto" onClick={() => disconnect()}>Disconnect</button>;
+  else
+    return <button className="btn btn-outline-success ms-auto" onClick={() => connect()}>Connect Wallet</button>;
 }
