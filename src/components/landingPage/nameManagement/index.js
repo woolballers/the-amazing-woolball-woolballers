@@ -19,33 +19,6 @@ function NameManagement() {
     <div className="container">
       <div className="row">
         <div className="col-lg-6 col-md-12">
-          <p>
-            <div>
-              Name<span style={{ color: "orange" }}>#</span>
-              <input type="text" id="wname" className="is-invalid"></input>
-              <button className="button-orange"> Zeeearch! </button>
-              <button className="button-orange bg-secondary"> Register </button>
-              <div className="invalid-feedback">Please choose a username.</div>
-            </div>
-          </p>
-
-          <p>
-            <div>
-              <span className="GrislyBeast">
-                Neiman<span style={{ color: "orange" }}>#</span>
-              </span>
-            </div>
-
-            <div>
-              <i>Owner</i>: 0x95222290DD7278Aa3Ddd389Cc1E1d165CC4BAfe5
-            </div>
-          </p>
-
-          <Divider
-            primaryColor="orange"
-            secondaryColor="orange"
-            heightValue={5}
-          ></Divider>
           <div>
             <button className="button-hashtag">
               Create{" "}
@@ -59,54 +32,66 @@ function NameManagement() {
           <div>
             <form>
               <div className="form-group">
-                Choose the link features:
-                <div>
-                  <input
-                    type="checkbox"
-                    className="form-check-input"
-                    name="friendship"
-                  ></input>
-                  <label className="form-check-label" htmlFor="friendship">
-                    Friendship
-                  </label>
-                  <input
-                    type="text"
-                    className="mx-2"
-                    id="wname"
-                    placeholder="How long?"
-                  ></input>
-                </div>
-                <div>
-                  <input
-                    type="checkbox"
-                    className="form-check-input"
-                    name="collaborated"
-                  ></input>
-                  <label className="form-check-label" htmlFor="collaborated">
-                    Work
-                  </label>
-                  <input
-                    type="text"
-                    className="mx-2"
-                    id="wname"
-                    placeholder="Which organization?"
-                  ></input>
-                </div>
-                <div>
-                  <input
-                    type="checkbox"
-                    className="form-check-input"
-                    name="community"
-                  ></input>
-                  <label className="form-check-label" htmlFor="community">
-                    Shared communities
-                  </label>
-                  <input
-                    type="text"
-                    className="mx-2"
-                    id="wname"
-                    placeholder="Which communities?"
-                  ></input>
+                What's your relation?
+                <div className="row">
+                  <div className="col-md-4">
+                    <div>
+                      <input
+                        type="checkbox"
+                        className="form-check-input"
+                        name="friendship"
+                      ></input>
+                      <label className="form-check-label" htmlFor="friendship">
+                        Friendship
+                      </label>
+                    </div>
+                    <div>
+                      <input
+                        type="checkbox"
+                        className="form-check-input"
+                        name="collaborated"
+                      ></input>
+                      <label className="form-check-label" htmlFor="collaborated">
+                        Work
+                      </label>
+                    </div>
+                    <div>
+                      <input
+                        type="checkbox"
+                        className="form-check-input"
+                        name="community"
+                      ></input>
+                      <label className="form-check-label" htmlFor="community">
+                        Shared communities
+                      </label>
+                    </div>
+                  </div>
+                  <div className="col-md-8">
+                    <div>
+                      <input
+                        type="text"
+                        className="mx-2"
+                        id="wname"
+                        placeholder="How long?"
+                      ></input>
+                    </div>
+                    <div>
+                      <input
+                        type="text"
+                        className="mx-2"
+                        id="wname"
+                        placeholder="Which organization?"
+                      ></input>
+                    </div>
+                    <div>
+                      <input
+                        type="text"
+                        className="mx-2"
+                        id="wname"
+                        placeholder="Which communities?"
+                      ></input>
+                    </div>
+                  </div>
                 </div>
               </div>
               <button className="button-orange"> Create </button>
@@ -177,11 +162,11 @@ function NameManagement() {
         </div>
 
         <div className="col-lg-6 col-md-12">
-          <h3> Names Registered </h3>
           <div
             className="names-box"
             data-augmented-ui="tl-2-round-inset tr-2-round-inset br-2-scoop-inset bl-2-scoop-xy both"
           >
+            <h3 className="text-center GrislyBeast"> Registered Names </h3>
             Alice<span style={{ color: "orange" }}>#</span>, Alice
             <span style={{ color: "orange" }}>#</span>, Alice
             <span style={{ color: "orange" }}>#</span>

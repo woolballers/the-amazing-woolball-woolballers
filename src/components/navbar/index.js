@@ -20,12 +20,12 @@ function Navbar() {
       </nav>
 
       <nav class="navbar">
-        <div class="collapse multi-collapse w-100" id="searchResults">
+        <div class="collapse multi-collapse" id="searchResults">
           <div class="card card-body flex-row">
             <WoolName name="Neiman"/>&nbsp;belongs to 0x95222290DD7278Aa3Ddd389Cc1E1d165CC4BAfe5.
           </div>
           <div class="card card-body flex-row">
-            <WoolName name="Neiman"/>&nbsp;is unregistered <button className="btn btn-warning">Register</button>
+            <WoolName name="Neiman"/>&nbsp;is unregistered&nbsp;&nbsp;<button className="button-orange">Register</button>
           </div>
         </div>
       </nav>
