@@ -9,14 +9,11 @@ import { mainnet, goerli } from "wagmi/chains";
 import App from "./App";
 
 import "./assets/css/index.css";
-import "./assets/css/augmented-ui.min.css"
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap-icons/font/bootstrap-icons.css';
+import "./assets/css/augmented-ui.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 // bootstrap JS, consider changing to import only the functionality we use
-import Popper from '@popperjs/core';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
-
+import "bootstrap/dist/js/bootstrap.bundle.min";
 
 const chains = [mainnet, goerli];
 
