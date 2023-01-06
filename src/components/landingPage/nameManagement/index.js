@@ -1,4 +1,9 @@
+import { useState } from "react";
+
+
 import SwirlArrowRight from "assets/images/arrows/swirl-arrow-right.svg";
+import WoolName from "components/woolName";
+
 
 function Divider(props) {
   const { primaryColor, secondaryColor, heightValue } = props;
@@ -15,6 +20,15 @@ function Divider(props) {
 }
 
 function NameManagement() {
+  const [selectedName, setSelectedName] = useState(null);
+
+  const nameStyle = (name) => {
+    if (name !== selectedName)
+      return "btn bg-transparent";
+    else
+      return "btn bg-transparent border border-4 border-primary"
+  }
+
   return (
     <div className="container">
       <div className="row">
@@ -23,7 +37,7 @@ function NameManagement() {
             <button className="button-hashtag">
               Create{" "}
               <span className="GrislyBeast">
-                Neiman<span style={{ color: "orange" }}>#</span>Alice
+                Neiman<span style={{ color: "orange" }}>#</span>{(selectedName == "none" || selectedName == null) ? "???": selectedName}
               </span>
               .
             </button>
@@ -119,7 +133,7 @@ function NameManagement() {
                 />{" "}
                 Tomlightning
               </span>
-              &nbsp; &nbsp; &nbsp; &nbsp; (
+              &nbsp; <i className="bi bi-chat"></i> &nbsp; &nbsp; &nbsp; (
               <span className="GrislyBeast">
                 Neiman<span style={{ color: "orange" }}>#</span>Tomlightning
               </span>
@@ -167,66 +181,66 @@ function NameManagement() {
             data-augmented-ui="tl-2-round-inset tr-2-round-inset br-2-scoop-inset bl-2-scoop-xy both"
           >
             <h3 className="text-center GrislyBeast"> Registered Names </h3>
-            Alice<span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>
-            Alice<span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>, Alice
-            <span style={{ color: "orange" }}>#</span>
+            <button className={nameStyle("tomlightning")} id="tomlightning" onClick={() => selectedName == "tomlightning" ? setSelectedName("none") : setSelectedName("tomlightning")}><WoolName name="tomlightning"/></button>
+            <button className={nameStyle("ginbasil")} id="ginbasil" onClick={() => selectedName == "ginbasil" ? setSelectedName("none") : setSelectedName("ginbasil")}><WoolName name="ginbasil"/></button>
+            <button className={nameStyle("scalo")} id="scalo" onClick={() => selectedName == "scalo" ? setSelectedName("none") : setSelectedName("scalo")}><WoolName name="scalo"/></button>
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/> ,
+            <WoolName name="alice"/>
           </div>
           &nbsp;
           <div>
