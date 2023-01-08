@@ -1,6 +1,9 @@
 import { useState } from "react";
+
 import Profile from "components/profile";
+import WoolName from "components/woolName"
 import NameSearchBox from "components/navbar/NameSearchBox";
+
 
 function Navbar() {
   const [showNameSearchBox, setShowNameSearchBox] = useState(false);
@@ -18,6 +21,7 @@ function Navbar() {
     setSearchTerm(searchTermText);
     setShowNameSearchBox(true);
   };
+
 
   return (
     <div className="border-bottom border-danger mb-4">
