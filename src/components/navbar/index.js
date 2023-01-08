@@ -22,10 +22,13 @@ function Navbar() {
     setShowNameSearchBox(true);
   };
 
-  return(
+
+  return (
     <div className="border-bottom border-danger mb-4">
       <nav className="navbar navbar-expand-lg nav-fill">
-        <a className="navbar-brand" href="#">Woolballers</a>
+        <a className="navbar-brand" href="#">
+          Woolballers
+        </a>
         <form className="d-flex" onSubmit={onSearchName}>
           <input
             className="form-control me-2"
@@ -38,11 +41,9 @@ function Navbar() {
           <button className="btn btn-outline-success" type="submit">
             <i className="bi bi-search"></i>
           </button>
-
-
         </form>
 
-        < Profile />
+        <Profile />
       </nav>
 
       {searchBox}

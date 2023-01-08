@@ -1,10 +1,8 @@
 import { useContractRead } from "wagmi";
-
 import {
   WOOLBALL_CONTRACT_ADDRESS,
   WOOLBALL_CONTRACT_CHAIN_ID,
 } from "../../constants/contract";
-
 import woolballABI from "../../contracts/woolballABI.json";
 import { getNameId } from "../../utils/woolball";
 import NameSearchRegistered from "./NameSearchRegistered";
