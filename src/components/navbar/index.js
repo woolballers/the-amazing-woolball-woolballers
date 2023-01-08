@@ -1,16 +1,42 @@
+import { useState } from "react";
+
 import Profile from "components/profile";
 import WoolName from "components/woolName"
+import NameSearchBox from "components/navbar/NameSearchBox";
 
 
 function Navbar() {
+  const [showNameSearchBox, setShowNameSearchBox] = useState(false);
+  const [searchTermText, setSearchTermText] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const searchBox =
+    (showNameSearchBox && (
+      <NameSearchBox show={showNameSearchBox} searchTerm={searchTerm} />
+    )) ||
+    null;
+
+  const onSearchName = (e) => {
+    e.preventDefault();
+    setSearchTerm(searchTermText);
+    setShowNameSearchBox(true);
+  };
+
   return(
     <div className="border-bottom border-danger mb-4">
       <nav className="navbar navbar-expand-lg nav-fill">
         <a className="navbar-brand" href="#">Woolballers</a>
-        <form className="d-flex">
-          <input className="form-control me-2" type="search" placeholder="Search Name" aria-label="Search"/>
-          <button className="btn btn-outline-success" type="button" data-bs-toggle="collapse" data-bs-target="#searchResults" aria-expanded="false" aria-controls="searchResults">
-            <i class="bi bi-search"></i>
+        <form className="d-flex" onSubmit={onSearchName}>
+          <input
+            className="form-control me-2"
+            type="search"
+            placeholder="Search Name"
+            aria-label="Search"
+            value={searchTermText}
+            onChange={(e) => setSearchTermText(e.target.value)}
+          />
+          <button className="btn btn-outline-success" type="submit">
+            <i className="bi bi-search"></i>
           </button>
 
 
@@ -19,15 +45,9 @@ function Navbar() {
         < Profile />
       </nav>
 
-      <nav class="navbar">
-        <div class="collapse multi-collapse" id="searchResults">
-          <div class="card card-body flex-row">
-            <WoolName name="Neiman"/>&nbsp;is unregistered&nbsp;&nbsp;<button className="button-orange">Register</button>
-          </div>
-        </div>
-      </nav>
+      {searchBox}
     </div>
-  )
+  );
 }
 
 export default Navbar;
