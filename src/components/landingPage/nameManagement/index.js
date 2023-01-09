@@ -1,9 +1,7 @@
 import { useState } from "react";
 
-
+import RegisteredNames from "components/landingPage/registeredNames";
 import SwirlArrowRight from "assets/images/arrows/swirl-arrow-right.svg";
-import WoolName from "components/woolName";
-
 
 function Divider(props) {
   const { primaryColor, secondaryColor, heightValue } = props;
@@ -22,13 +20,6 @@ function Divider(props) {
 function NameManagement() {
   const [selectedName, setSelectedName] = useState(null);
 
-  const nameStyle = (name) => {
-    if (name !== selectedName)
-      return "btn bg-transparent";
-    else
-      return "btn bg-transparent border border-4 border-primary"
-  }
-
   return (
     <div className="container">
       <div className="row">
@@ -37,7 +28,10 @@ function NameManagement() {
             <button className="button-hashtag">
               Create{" "}
               <span className="GrislyBeast">
-                Neiman<span style={{ color: "orange" }}>#</span>{(selectedName == "none" || selectedName == null) ? "???": selectedName}
+                Neiman<span style={{ color: "orange" }}>#</span>
+                {selectedName == "none" || selectedName == null
+                  ? "???"
+                  : selectedName}
               </span>
               .
             </button>
@@ -65,7 +59,10 @@ function NameManagement() {
                         className="form-check-input"
                         name="collaborated"
                       ></input>
-                      <label className="form-check-label" htmlFor="collaborated">
+                      <label
+                        className="form-check-label"
+                        htmlFor="collaborated"
+                      >
                         Work
                       </label>
                     </div>
@@ -176,76 +173,10 @@ function NameManagement() {
         </div>
 
         <div className="col-lg-6 col-md-12">
-          <div
-            className="names-box"
-            data-augmented-ui="tl-2-round-inset tr-2-round-inset br-2-scoop-inset bl-2-scoop-xy both"
-          >
-            <h3 className="text-center GrislyBeast"> Registered Names </h3>
-            <button className={nameStyle("tomlightning")} id="tomlightning" onClick={() => selectedName == "tomlightning" ? setSelectedName("none") : setSelectedName("tomlightning")}><WoolName name="tomlightning"/></button>
-            <button className={nameStyle("ginbasil")} id="ginbasil" onClick={() => selectedName == "ginbasil" ? setSelectedName("none") : setSelectedName("ginbasil")}><WoolName name="ginbasil"/></button>
-            <button className={nameStyle("scalo")} id="scalo" onClick={() => selectedName == "scalo" ? setSelectedName("none") : setSelectedName("scalo")}><WoolName name="scalo"/></button>
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/> ,
-            <WoolName name="alice"/>
-          </div>
-          &nbsp;
-          <div>
-            <h3> Woolball (All Links) </h3>
-          </div>
+          <RegisteredNames
+            setSelectedName={setSelectedName}
+            selectedName={selectedName}
+          />
         </div>
       </div>
     </div>
