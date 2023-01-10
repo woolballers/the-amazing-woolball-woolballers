@@ -2,9 +2,11 @@ import SingleRegisteredName from "./SingleRegisteredName";
 import { useContractRead, useContractReads } from "wagmi";
 import {
   WOOLBALL_CONTRACT_ADDRESS,
+  WOOLBALL_REGISTRAR_CONTRACT_ADDRESS,
   WOOLBALL_CONTRACT_CHAIN_ID,
 } from "constants/contract";
 import woolballABI from "contracts/woolballABI.json";
+import woolballRegistrarABI from "contracts/woolballRegistrarABI.json";
 import { useState } from "react";
 
 const woolballContract = {
@@ -13,53 +15,67 @@ const woolballContract = {
   chainId: WOOLBALL_CONTRACT_CHAIN_ID,
 };
 
+const woolballRegistrarContract = {
+  address: WOOLBALL_REGISTRAR_CONTRACT_ADDRESS,
+  abi: woolballRegistrarABI,
+  chainId: WOOLBALL_CONTRACT_CHAIN_ID,
+};
+
+const LOADING_STAGE = {
+  DONE: 0,
+  LOADING_LEN: 1,
+  LOADING_NAME_IDS: 2,
+  LOADING_NAMES: 3,
+};
+
 export default function RegisteredNames({ setSelectedName, selectedName }) {
   const [namesLength, setNamesLength] = useState(0);
-  const [isLoadingLen, setIsLoadingLen] = useState(true);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(LOADING_STAGE.LOADING_LEN);
+  const [nameIds, setNameIds] = useState([]);
+  const [registeredNames, setRegisteredNames] = useState([]);
 
   const contractReadNamesLength = useContractRead({
     ...woolballContract,
     functionName: "getNamesLen",
-
-    onSettled() {
-      setIsLoadingLen(false);
-    },
     onSuccess(data) {
-      console.log("contractReadNamesLength", data);
       setNamesLength(data.toNumber());
+      setIsLoading(LOADING_STAGE.LOADING_NAME_IDS);
     },
   });
 
-  console.log(
-    "array of indexes",
-    [...Array(namesLength).keys()].map((val) => {
-      return { ...woolballContract, functionName: "arrNames", args: [val] };
-    })
-  );
-
-  console.log("enabled", isLoadingLen === false && namesLength > 0);
-  const contractReadNames = useContractReads({
+  const contractReadNameIds = useContractReads({
     contracts:
-      (isLoadingLen === false &&
+      (isLoading === LOADING_STAGE.LOADING_NAME_IDS &&
         namesLength > 0 &&
         [...Array(namesLength).keys()].map((val) => {
           return { ...woolballContract, functionName: "arrNames", args: [val] };
         })) ||
       [],
-    enabled: isLoadingLen === false && namesLength > 0,
-    onSettled() {
-      setIsLoading(false);
-    },
+    enabled: isLoading === LOADING_STAGE.LOADING_NAME_IDS && namesLength > 0,
+
     onSuccess(data) {
-      console.log("contractReadNames", data);
+      setNameIds(data);
+      setIsLoading(LOADING_STAGE.LOADING_NAMES);
     },
   });
 
-  const nameStyle = (name) => {
-    if (name !== selectedName) return "btn bg-transparent";
-    else return "btn bg-transparent border border-4 border-primary";
-  };
+  const contractReadNames = useContractReads({
+    contracts:
+      (isLoading === LOADING_STAGE.LOADING_NAMES &&
+        nameIds.map((val) => {
+          return {
+            ...woolballRegistrarContract,
+            functionName: "idToNames",
+            args: [val],
+          };
+        })) ||
+      [],
+    enabled: isLoading === LOADING_STAGE.LOADING_NAMES,
+    onSuccess(data) {
+      setIsLoading(LOADING_STAGE.DONE);
+      setRegisteredNames(data);
+    },
+  });
 
   return (
     <>
@@ -68,15 +84,17 @@ export default function RegisteredNames({ setSelectedName, selectedName }) {
         data-augmented-ui="tl-2-round-inset tr-2-round-inset br-2-scoop-inset bl-2-scoop-xy both"
       >
         <h3 className="text-center GrislyBeast"> Registered Names </h3>
-        {["tomlightning", "ginbasil", "scalo"].map((name) => (
-          <SingleRegisteredName
-            key={name}
-            name={name}
-            nameStyle={nameStyle}
-            selectedName={selectedName}
-            setSelectedName={setSelectedName}
-          />
-        ))}
+        {isLoading === LOADING_STAGE.DONE &&
+          registeredNames.map((name) => (
+            <SingleRegisteredName
+              key={name}
+              name={name}
+              isSelected={selectedName === name}
+              setSelectedName={setSelectedName}
+            />
+          ))}
+
+        {isLoading !== LOADING_STAGE.DONE && <>Loading...</>}
       </div>
       &nbsp;
       <div>

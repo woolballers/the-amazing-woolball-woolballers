@@ -1,17 +1,21 @@
 import WoolName from "components/woolName";
 
+const nameStyle = (isSelected) => {
+  if (!isSelected) return "btn bg-transparent";
+  else return "btn bg-transparent border border-4 border-primary";
+};
+
 export default function SingleRegisteredName({
   name,
-  nameStyle,
   setSelectedName,
-  selectedName,
+  isSelected,
 }) {
   return (
     <button
-      className={nameStyle(name)}
+      className={nameStyle(isSelected)}
       id={name}
       onClick={() =>
-        selectedName === name ? setSelectedName("none") : setSelectedName(name)
+        isSelected ? setSelectedName("none") : setSelectedName(name)
       }
     >
       <WoolName name={name} />

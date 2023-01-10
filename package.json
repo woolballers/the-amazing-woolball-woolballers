@@ -1,7 +1,13 @@
 {
   "name": "the-amazing-woolball-woolballers",
+  "description": "A fun app to play with woolball",
   "version": "0.1.0",
   "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/woolballers/woolball-contracts.git"
+  },
+  "license": "MIT",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
