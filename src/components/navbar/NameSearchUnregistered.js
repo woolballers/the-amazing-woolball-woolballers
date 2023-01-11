@@ -6,10 +6,14 @@ import {
 } from "../../constants/contract";
 import woolballRegistrarABI from "../../contracts/woolballRegistrarABI.json";
 import { ethers } from "ethers";
+import ChooseNameBtn from "./ChooseNameBtn";
 
 const ONE_YEAR_EXPIRY = 60 * 60 * 24 * 365;
 
-export default function NameSearchUnregistered({ searchedName }) {
+export default function NameSearchUnregistered({
+  searchedName,
+  setChoosenName,
+}) {
   const { address, isConnecting, isDisconnected } = useAccount();
 
   const { data, error, isError, write } = useContractWrite({
@@ -32,7 +36,15 @@ export default function NameSearchUnregistered({ searchedName }) {
     <>
       <WoolName name={searchedName} />
       {!isSuccess && <>&nbsp;is unregistered </>}
-      {isSuccess && !isLoading && <>&nbsp;is registered </>}
+      {isSuccess && !isLoading && (
+        <>
+          &nbsp;is registered{" "}
+          <ChooseNameBtn
+            setChoosenName={setChoosenName}
+            searchedName={searchedName}
+          />
+        </>
+      )}
       {isLoading && <span className="text-warning">Registering...</span>}
       {!isLoading && !isSuccess && (
         <button className="btn btn-warning" onClick={() => write()}>

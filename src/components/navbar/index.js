@@ -1,18 +1,20 @@
 import { useState } from "react";
 
 import Profile from "components/profile";
-import WoolName from "components/woolName"
 import NameSearchBox from "components/navbar/NameSearchBox";
 
-
-function Navbar() {
+function Navbar({ setChoosenName }) {
   const [showNameSearchBox, setShowNameSearchBox] = useState(false);
   const [searchTermText, setSearchTermText] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
 
   const searchBox =
     (showNameSearchBox && (
-      <NameSearchBox show={showNameSearchBox} searchTerm={searchTerm} />
+      <NameSearchBox
+        show={showNameSearchBox}
+        searchTerm={searchTerm}
+        setChoosenName={setChoosenName}
+      />
     )) ||
     null;
 
@@ -21,7 +23,6 @@ function Navbar() {
     setSearchTerm(searchTermText);
     setShowNameSearchBox(true);
   };
-
 
   return (
     <div className="border-bottom border-danger mb-4">

@@ -9,7 +9,7 @@ import NameSearchRegistered from "./NameSearchRegistered";
 import NameSearchUnregistered from "./NameSearchUnregistered";
 import { useEffect, useState } from "react";
 
-export default function NameSearchBox({ searchTerm }) {
+export default function NameSearchBox({ searchTerm, setChoosenName }) {
   const [fetchEnabled, setFetchEnabled] = useState(false);
   const [tokenData, setTokenData] = useState({});
 
@@ -53,10 +53,14 @@ export default function NameSearchBox({ searchTerm }) {
             <NameSearchRegistered
               searchedName={searchTerm}
               tokenData={tokenData}
+              setChoosenName={setChoosenName}
             />
           )}
           {!nameRegistered && (
-            <NameSearchUnregistered searchedName={searchTerm} />
+            <NameSearchUnregistered
+              searchedName={searchTerm}
+              setChoosenName={setChoosenName}
+            />
           )}
         </div>
       </div>

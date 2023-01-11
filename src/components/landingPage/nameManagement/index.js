@@ -1,23 +1,8 @@
 import { useState } from "react";
-
+import Divider from "./Divider";
 import RegisteredNames from "components/landingPage/registeredNames";
-import SwirlArrowRight from "assets/images/arrows/swirl-arrow-right.svg";
-
-function Divider(props) {
-  const { primaryColor, secondaryColor, heightValue } = props;
-  return (
-    <hr
-      style={{
-        color: primaryColor,
-        backgroundColor: secondaryColor,
-        height: heightValue,
-        marginRight: "10%",
-      }}
-    />
-  );
-}
-
-function NameManagement() {
+import NameLinks from "../nameLinks";
+function NameManagement({ choosenName }) {
   const [selectedName, setSelectedName] = useState(null);
 
   return (
@@ -28,8 +13,9 @@ function NameManagement() {
             <button className="button-hashtag">
               Create{" "}
               <span className="GrislyBeast">
-                Neiman<span style={{ color: "orange" }}>#</span>
-                {selectedName == "none" || selectedName == null
+                {choosenName}
+                <span style={{ color: "orange" }}>#</span>
+                {selectedName === "none" || selectedName == null
                   ? "???"
                   : selectedName}
               </span>
@@ -112,63 +98,8 @@ function NameManagement() {
               primaryColor="orange"
               secondaryColor="orange"
               heightValue={5}
-            ></Divider>
-            <h3>
-              {" "}
-              <span className="GrislyBeastH3">
-                Neiman<span style={{ color: "orange" }}>#</span>
-              </span>
-              's Links
-            </h3>
-            <div>
-              <span className="GrislyBeast">
-                Neiman{" "}
-                <img
-                  src={SwirlArrowRight}
-                  className="arrowHeightRed"
-                  alt="Swirl Arrow Right"
-                />{" "}
-                Tomlightning
-              </span>
-              &nbsp; <i className="bi bi-chat"></i> &nbsp; &nbsp; &nbsp; (
-              <span className="GrislyBeast">
-                Neiman<span style={{ color: "orange" }}>#</span>Tomlightning
-              </span>
-              )
-            </div>
-            <div>
-              <span className="GrislyBeast">
-                Neiman{" "}
-                <img
-                  src={SwirlArrowRight}
-                  className="arrowHeightGreen"
-                  alt="Swirl Arrow Right"
-                />{" "}
-                Scalo
-              </span>
-              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-              &nbsp; &nbsp; (
-              <span className="GrislyBeast">
-                Neiman<span style={{ color: "orange" }}>#</span>Scalo
-              </span>
-              )
-            </div>
-            <div>
-              <span className="GrislyBeast">
-                Neiman{" "}
-                <img
-                  src={SwirlArrowRight}
-                  className="arrowHeightBlue"
-                  alt="Swirl Arrow Right"
-                />{" "}
-                Wolfram
-              </span>
-              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (
-              <span className="GrislyBeast">
-                Neiman<span style={{ color: "orange" }}>#</span>Wolfram
-              </span>
-              )
-            </div>
+            />
+            <NameLinks choosenName={choosenName} />
           </div>
         </div>
 

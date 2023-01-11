@@ -34,16 +34,20 @@ export default function RegisteredNames({ setSelectedName, selectedName }) {
   const [nameIds, setNameIds] = useState([]);
   const [registeredNames, setRegisteredNames] = useState([]);
 
-  const contractReadNamesLength = useContractRead({
+  useContractRead({
     ...woolballContract,
     functionName: "getNamesLen",
     onSuccess(data) {
       setNamesLength(data.toNumber());
-      setIsLoading(LOADING_STAGE.LOADING_NAME_IDS);
+      if (data.toNumber() === 0) {
+        setIsLoading(LOADING_STAGE.DONE);
+      } else {
+        setIsLoading(LOADING_STAGE.LOADING_NAME_IDS);
+      }
     },
   });
 
-  const contractReadNameIds = useContractReads({
+  useContractReads({
     contracts:
       (isLoading === LOADING_STAGE.LOADING_NAME_IDS &&
         namesLength > 0 &&
@@ -59,7 +63,7 @@ export default function RegisteredNames({ setSelectedName, selectedName }) {
     },
   });
 
-  const contractReadNames = useContractReads({
+  useContractReads({
     contracts:
       (isLoading === LOADING_STAGE.LOADING_NAMES &&
         nameIds.map((val) => {
