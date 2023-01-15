@@ -4,7 +4,9 @@ import { configureChains, createClient } from "wagmi";
 import { publicProvider } from "wagmi/providers/public";
 import { mainnet, goerli, hardhat } from "wagmi/chains";
 
-const chains = [mainnet, goerli, hardhat];
+// todo add correct chains
+// const chains = [mainnet, goerli, hardhat];
+const chains = [hardhat];
 
 // Wagmi client
 const { provider, webSocketProvider } = configureChains(chains, [

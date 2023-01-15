@@ -1,6 +1,30 @@
 import Relationship from "./Relationship";
+import React, { useState } from "react";
 
-export default function CreateRelationship() {
+export default function CreateRelationship({ selectedName }) {
+  const [friendship, setFriendship] = useState(false);
+  const [collaborated, setCollaborated] = useState(false);
+  const [community, setCommunity] = useState(false);
+
+  const [isError, setIsError] = useState("");
+
+  const checkCreateClick = () => {
+    if (friendship || collaborated || community) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  const createClickHandler = (e) => {
+    e.preventDefault();
+    if (checkCreateClick()) {
+      console.log("create relationship");
+    } else {
+      setIsError("Please select at least one relationship type.");
+    }
+  };
+
   return (
     <form>
       <div className="form-group">
@@ -10,20 +34,30 @@ export default function CreateRelationship() {
             name="friendship"
             label="Friendship"
             placeholder="How long?"
+            isChecked={friendship}
+            setIsChecked={setFriendship}
           />
           <Relationship
             name="collaborated"
             label="Work"
             placeholder="Which organization?"
+            isChecked={collaborated}
+            setIsChecked={setCollaborated}
           />
           <Relationship
             name="community"
             label="Shared communities"
             placeholder="Which communities?"
+            isChecked={community}
+            setIsChecked={setCommunity}
           />
         </div>
       </div>
-      <button className="button-orange" onClick={() => {}}>
+      <button
+        className="button-orange"
+        disabled={selectedName == null}
+        onClick={createClickHandler}
+      >
         {" "}
         Create{" "}
       </button>

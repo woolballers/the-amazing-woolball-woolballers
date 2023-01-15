@@ -1,10 +1,6 @@
 import WoolName from "components/woolName";
 import { useContractWrite, useWaitForTransaction, useAccount } from "wagmi";
-import {
-  WOOLBALL_REGISTRAR_CONTRACT_ADDRESS,
-  WOOLBALL_CONTRACT_CHAIN_ID,
-} from "../../constants/contract";
-import woolballRegistrarABI from "../../contracts/woolballRegistrarABI.json";
+import { woolballRegistrarContract } from "../../constants/contract";
 import { ethers } from "ethers";
 import ChooseNameBtn from "./ChooseNameBtn";
 
@@ -17,12 +13,10 @@ export default function NameSearchUnregistered({
   const { address, isConnecting, isDisconnected } = useAccount();
 
   const { data, error, isError, write } = useContractWrite({
-    address: WOOLBALL_REGISTRAR_CONTRACT_ADDRESS,
-    abi: woolballRegistrarABI,
+    ...woolballRegistrarContract,
     functionName: "register",
     args: [searchedName, address, ONE_YEAR_EXPIRY],
     enabled: Boolean(searchedName),
-    chainId: WOOLBALL_CONTRACT_CHAIN_ID,
     mode: "recklesslyUnprepared",
     overrides: {
       value: ethers.utils.parseEther("0.01"),

@@ -26,7 +26,7 @@ function NameManagement({ choosenName }) {
           </div>
 
           <div>
-            <CreateRelationship />
+            <CreateRelationship selectedName={selectedName} />
 
             <Divider
               primaryColor="orange"

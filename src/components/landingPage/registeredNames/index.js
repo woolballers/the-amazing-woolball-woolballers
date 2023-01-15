@@ -1,25 +1,10 @@
 import SingleRegisteredName from "./SingleRegisteredName";
 import { useContractRead, useContractReads } from "wagmi";
 import {
-  WOOLBALL_CONTRACT_ADDRESS,
-  WOOLBALL_REGISTRAR_CONTRACT_ADDRESS,
-  WOOLBALL_CONTRACT_CHAIN_ID,
+  woolballContract,
+  woolballRegistrarContract,
 } from "constants/contract";
-import woolballABI from "contracts/woolballABI.json";
-import woolballRegistrarABI from "contracts/woolballRegistrarABI.json";
 import { useState } from "react";
-
-const woolballContract = {
-  address: WOOLBALL_CONTRACT_ADDRESS,
-  abi: woolballABI,
-  chainId: WOOLBALL_CONTRACT_CHAIN_ID,
-};
-
-const woolballRegistrarContract = {
-  address: WOOLBALL_REGISTRAR_CONTRACT_ADDRESS,
-  abi: woolballRegistrarABI,
-  chainId: WOOLBALL_CONTRACT_CHAIN_ID,
-};
 
 const LOADING_STAGE = {
   DONE: 0,

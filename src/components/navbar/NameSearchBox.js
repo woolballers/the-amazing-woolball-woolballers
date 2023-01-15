@@ -1,9 +1,5 @@
 import { useContractRead } from "wagmi";
-import {
-  WOOLBALL_CONTRACT_ADDRESS,
-  WOOLBALL_CONTRACT_CHAIN_ID,
-} from "../../constants/contract";
-import woolballABI from "../../contracts/woolballABI.json";
+import { woolballContract } from "../../constants/contract";
 import { getNameId } from "../../utils/woolball";
 import NameSearchRegistered from "./NameSearchRegistered";
 import NameSearchUnregistered from "./NameSearchUnregistered";
@@ -21,11 +17,10 @@ export default function NameSearchBox({ searchTerm, setChoosenName }) {
   }, [searchTerm]);
 
   const contractRead = useContractRead({
-    address: WOOLBALL_CONTRACT_ADDRESS,
-    abi: woolballABI,
+    ...woolballContract,
     functionName: "ownerOf",
     args: [nameId],
-    chainId: WOOLBALL_CONTRACT_CHAIN_ID,
+
     enabled: fetchEnabled,
     onSettled() {
       setFetchEnabled(false);

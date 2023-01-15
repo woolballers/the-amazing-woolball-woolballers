@@ -1,8 +1,20 @@
-export default function Relationship({ name, label, placeholder }) {
+export default function Relationship({
+  name,
+  label,
+  placeholder,
+  isChecked,
+  setIsChecked,
+}) {
   return (
     <div className="row my-1">
       <div className="col-md-4">
-        <input type="checkbox" className="form-check-input" name={name}></input>
+        <input
+          type="checkbox"
+          className="form-check-input"
+          name={name}
+          checked={isChecked}
+          onChange={() => setIsChecked(!isChecked)}
+        ></input>
         <label className="form-check-label" htmlFor={name}>
           {label}
         </label>
